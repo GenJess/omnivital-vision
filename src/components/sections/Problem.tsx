@@ -4,34 +4,25 @@ import { TrendingDown, Package, UserX, EyeOff } from "lucide-react";
 const problems = [
   {
     icon: TrendingDown,
-    title: "Low Retention",
-    body: "Most wellness brands see dramatic churn after initial purchase. Without ongoing value, customers leave within 60 days.",
+    title: "Acquire, Disappear, Churn",
+    body: "Brands optimize for the first purchase, then go silent. Most subscribers cancel within 60 days.",
   },
   {
     icon: Package,
-    title: "Commodity Products",
-    body: "Supplements are undifferentiated. Private-label economics make switching costs near zero for consumers.",
+    title: "Commoditized SKUs",
+    body: "Green powders. Multivitamins. Protein. Private-label economics make switching costs zero.",
   },
   {
     icon: UserX,
-    title: "No Personalization",
-    body: "One-size-fits-all recommendations ignore individual biology, lifestyle, and goals — leading to poor outcomes and disengagement.",
+    title: "No Real Personalization",
+    body: "A 5-question quiz isn't personalization. Real adaptation requires persistent context — which nobody is building.",
   },
   {
     icon: EyeOff,
-    title: "No Measurable Progress",
-    body: "Users have no objective way to know if a routine is working. Without visibility into outcomes, motivation fades.",
+    title: "No Retention Loop",
+    body: "No advisor. No streaks. No community. Customers have no reason to open the app — or remember the brand.",
   },
 ];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
-  }),
-};
 
 export default function Problem() {
   return (
@@ -42,14 +33,14 @@ export default function Problem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 max-w-3xl mx-auto"
         >
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">The Problem</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Traditional wellness brands are structurally weak
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
+            Most supplement brands are <span className="text-gradient-primary">logistics companies</span> with marketing budgets.
           </h2>
-          <p className="max-w-xl mx-auto text-muted-foreground">
-            The industry optimizes for acquisition, not retention. Most brands lack the tools to keep users engaged, accountable, or improving.
+          <p className="text-muted-foreground text-lg">
+            They sell you a bottle. They never talk to you again. The wellness industry has zero retention infrastructure.
           </p>
         </motion.div>
 
@@ -57,14 +48,14 @@ export default function Problem() {
           {problems.map((p, i) => (
             <motion.div
               key={i}
-              custom={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              className="glass-card p-6 group hover:border-primary/30 transition-colors"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -6 }}
+              className="glass-card p-6 group hover:border-primary/40 transition-all"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all">
                 <p.icon className="w-5 h-5 text-primary" />
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-2">{p.title}</h3>
