@@ -43,9 +43,10 @@ export default function SiteNav() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
         <Link
           to="/"
-          className="font-display text-2xl tracking-tight text-foreground hover:text-primary transition-colors"
+          className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
         >
-          OmniVital
+          <img src="/logo.png" alt="OmniVital" className="h-8 w-8 object-contain" width={32} height={32} />
+          <span className="font-display text-2xl tracking-tight">OmniVital</span>
         </Link>
 
         {/* Desktop */}
