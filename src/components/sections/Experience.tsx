@@ -1,79 +1,61 @@
 import { motion } from "framer-motion";
+import pourImg from "@/assets/ritual-pour.jpg";
 
 const steps = [
-  {
-    num: "01",
-    title: "Onboard & Discover Goals",
-    desc: "Users share their wellness priorities — sleep, energy, focus, nutrition — and OV builds a baseline understanding.",
-  },
-  {
-    num: "02",
-    title: "Receive Personalized Rituals",
-    desc: "The recommendation engine surfaces a curated set of daily and weekly rituals tailored to individual goals and constraints.",
-  },
-  {
-    num: "03",
-    title: "Check In Daily",
-    desc: "Users log adherence and feelings through voice or tap. Each check-in feeds data back into the system.",
-  },
-  {
-    num: "04",
-    title: "Track Progress & Streaks",
-    desc: "The Ritual Dashboard visualizes adherence, streaks, and self-reported outcomes — creating accountability and motivation.",
-  },
-  {
-    num: "05",
-    title: "Continuously Improve",
-    desc: "Over time, recommendations adapt. The AI guide synthesizes patterns, suggests adjustments, and deepens personalization.",
-  },
+  { n: "I", title: "Begin with intention", body: "A short conversation reveals your goals — energy, focus, sleep, calm. Your first ritual is shaped." },
+  { n: "II", title: "Receive your formulas", body: "Six formulas, arranged into morning, midday, and evening. Considered ingredients in clinical doses." },
+  { n: "III", title: "Practice, daily", body: "A single check-in. One feeling. Your streak grows. The act of returning becomes the practice." },
+  { n: "IV", title: "Speak with OV", body: "Tap the orb. Ask anything. The companion knows your stack — and answers as if it has known you for years." },
+  { n: "V", title: "Compound, quietly", body: "Months pass. Your data graph deepens. Recommendations sharpen. The practice becomes second nature." },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-padding relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/3 blur-[160px] rounded-full pointer-events-none" />
-
-      <div className="relative max-w-5xl mx-auto">
+    <section id="experience" className="section-padding relative">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-10 md:gap-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 1 }}
+          className="md:col-span-5 md:sticky md:top-32 md:self-start"
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Product Experience</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            How OmniVital works
+          <div className="flex items-center gap-4 mb-8">
+            <span className="hairline" />
+            <span className="eyebrow">The Practice</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-foreground mb-8">
+            How a day <span className="italic text-primary">unfolds.</span>
           </h2>
-          <p className="max-w-xl mx-auto text-muted-foreground">
-            OV — the AI wellness guide — is the front door to the experience. It turns onboarding into a conversation and routines into a system.
-          </p>
+          <div className="aspect-[4/5] overflow-hidden mt-10 max-w-sm">
+            <img
+              src={pourImg}
+              alt="A morning pour — the ritual begins"
+              loading="lazy"
+              width={1536}
+              height={1024}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </motion.div>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-5 md:left-8 top-0 bottom-0 w-px bg-border" />
-
-          <div className="space-y-8">
-            {steps.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="relative flex gap-6 md:gap-8"
-              >
-                <div className="relative z-10 w-10 h-10 md:w-16 md:h-16 shrink-0 rounded-full bg-card border border-border flex items-center justify-center">
-                  <span className="font-display text-sm md:text-base font-bold text-primary">{s.num}</span>
-                </div>
-                <div className="glass-card p-5 md:p-6 flex-1">
-                  <h3 className="font-display text-base md:text-lg font-semibold text-foreground mb-1.5">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="md:col-span-7 space-y-12 md:space-y-16">
+          {steps.map((s, i) => (
+            <motion.div
+              key={s.n}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: i * 0.05 }}
+              className="border-t border-border pt-8 md:pt-10 grid grid-cols-[3rem_1fr] md:grid-cols-[5rem_1fr] gap-6"
+            >
+              <p className="font-display text-3xl md:text-4xl text-primary italic">{s.n}</p>
+              <div>
+                <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">{s.title}</h3>
+                <p className="text-muted-foreground font-light leading-relaxed max-w-md">{s.body}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

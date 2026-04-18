@@ -1,77 +1,63 @@
 import { motion } from "framer-motion";
-import { Mic, BarChart3, Cpu, Shield } from "lucide-react";
-import voiceWave from "@/assets/voice-wave.jpg";
 
 const pillars = [
   {
-    icon: Mic,
-    title: "OV Voice Advisor",
-    desc: "ElevenLabs-powered floating orb. Tap to talk. The advisor knows your exact stack, today's check-in, and your streak.",
-    value: "24/7 customer success that never sleeps.",
+    no: "01",
+    title: "OV — Voice Companion",
+    body: "An intelligent presence, available the moment you need it. Tap. Speak. Receive considered guidance, attuned to your formulas, your day, your history.",
   },
   {
-    icon: BarChart3,
-    title: "Ritual Dashboard",
-    desc: "Daily 1–5 feeling check-ins. Streak bars. Monthly heatmap. Every interaction compounds into a personal data graph.",
-    value: "Compounding data deepens personalization.",
+    no: "02",
+    title: "The Daily Ritual",
+    body: "A quiet dashboard for your practice. Adherence. Feeling. Streak. Months become a quiet record of how you have shown up for yourself.",
   },
   {
-    icon: Cpu,
-    title: "OV GPT-4.1 Advisor",
-    desc: "A persistent AI that knows your formulas, history, and goals — and can reason about ingredient stacking and timing.",
-    value: "Re-engagement that drives retention.",
+    no: "03",
+    title: "The Advisor",
+    body: "A persistent, deeply contextual intelligence — knowing your stack, your patterns, your goals. The kind of attention previously reserved for concierge medicine.",
   },
   {
-    icon: Shield,
+    no: "04",
     title: "The Collective",
-    desc: "Privacy-first community. Connect by color tag, not real name. Realtime threads. Belonging without exposure.",
-    value: "Network effects without compromising data.",
+    body: "A privacy-first community. You are known by colour, not by name. Quiet conversations among people who take their practice seriously.",
   },
 ];
 
 export default function Platform() {
   return (
-    <section id="platform" className="section-padding relative overflow-hidden">
-      <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-20 pointer-events-none">
-        <img src={voiceWave} alt="" loading="lazy" width={1536} height={768} className="w-full h-full object-cover mix-blend-screen" />
-      </div>
-
-      <div className="relative max-w-6xl mx-auto">
+    <section id="platform" className="section-padding bg-card/30 border-y border-border">
+      <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.9 }}
+          className="max-w-2xl mb-20 md:mb-28"
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">The Platform</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5 max-w-3xl mx-auto leading-tight">
-            The software layer that makes <span className="text-gradient-primary">supplements sticky.</span>
+          <div className="flex items-center gap-4 mb-8">
+            <span className="hairline" />
+            <span className="eyebrow">The Companion</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight text-foreground">
+            Four quiet layers, <span className="italic text-primary">one practice.</span>
           </h2>
-          <p className="max-w-xl mx-auto text-muted-foreground">
-            AG1, Ritual, Thesis — they all sell bottles. OmniVital sells a system. Four integrated layers, designed for retention.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-16 md:gap-y-20">
           {pillars.map((p, i) => (
             <motion.div
-              key={i}
+              key={p.no}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="glass-card p-7 group hover:border-primary/40 transition-all"
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="group"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all">
-                <p.icon className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2">{p.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.desc}</p>
-              <p className="text-xs text-accent-foreground bg-accent/40 px-3 py-1.5 rounded-md inline-block">
-                {p.value}
-              </p>
+              <p className="font-display text-primary text-2xl italic mb-4">{p.no}</p>
+              <h3 className="font-display text-2xl md:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors duration-500">
+                {p.title}
+              </h3>
+              <p className="text-muted-foreground font-light leading-relaxed">{p.body}</p>
             </motion.div>
           ))}
         </div>
